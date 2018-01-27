@@ -1,0 +1,21 @@
+{
+  "name": "D-Donut",
+  "version": "0.2.1",
+  "description": "A complete discord bot for moderation, funny and other cool stuff...",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "discord.js": "^11.3.0",
+    "moment": "^2.20.1",
+    "moment-duration-format": "^2.2.1",
+    "youtube-search": "^1.0.10",
+    "canvas": "^1.6.9",
+    "urban-dictionary": "^1.0.6"
+  },
+  "engines": {
+    "node": "8.x"
+  }
+}

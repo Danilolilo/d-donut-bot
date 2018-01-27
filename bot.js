@@ -852,11 +852,6 @@ Please, If your wanna report bugs, just report it to my owner!
            }
 
 
-if(msg.startsWith(prefix + "audit-log")) {
-  if(!message.member.permissions.has("MANAGE_GUILD")) return message.reply("Haha, nice try but you don't have 'Manage Server' permission :smile:");
-  message.reply(`by creating a channel named audit-log in your server that I am able to speak, you'll be automatcly enabling me to make logs in it :smile:
-but, by deleting this channel, I'll not be able to make logs in your server...`)
-}
 
 if(msg.startsWith(prefix + "help")){
   const embed = new Discord.RichEmbed()
@@ -879,7 +874,6 @@ prefix = \`d-\`
 8- **removerole:** remove user from role.
 9- **mute:** user will be unable to send messages.
 10- **unmute:** user will be able to send messages.
-11- **audit-log:** enable audit-logs in your server.
 
 :notepad_spiral: **Information Commands** :notepad_spiral:
 

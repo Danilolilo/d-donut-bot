@@ -14,7 +14,8 @@
     "youtube-search": "^1.0.10",
     "canvas": "^1.6.9",
     "urban-dictionary": "^1.0.6",
-    "translate": "^1.0.1"
+    "translate": "^1.0.1",
+    "is-number": "^4.0.0"
   },
   "engines": {
     "node": "8.x"

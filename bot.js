@@ -215,7 +215,7 @@ if(msg.startsWith(prefix + 'poll')) {
 
 //`${reactions.get(agree).count-1}\`
 
-if((msg.startsWith(prefix + 'urbandictionary') || (msg.startsWith(prefix + 'ud')){if(msg.startsWith(prefix + 'urbandictionary' || 'ud')){
+if((msg.startsWith(prefix + 'urbandictionary')) || (msg.startsWith(prefix + 'ud'))){
   if(message.author.id != '343479135055642625') return;
 const ud = require('urban-dictionary')
    if(!args[1]){

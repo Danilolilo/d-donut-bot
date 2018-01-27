@@ -216,7 +216,6 @@ if(msg.startsWith(prefix + 'poll')) {
 //`${reactions.get(agree).count-1}\`
 
 if((msg.startsWith(prefix + 'urbandictionary')) || (msg.startsWith(prefix + 'ud'))){
-  if(message.author.id != '343479135055642625') return;
 const ud = require('urban-dictionary')
    if(!args[1]){
      ud.random(function (error, entry) {
@@ -895,6 +894,7 @@ prefix = \`d-\`
 9- **ping:** pong.
 10- **website:** my website.
 11-**group:** my server link.
+12- **urbandictionary / ud:** search something in urband dictionary.
 
 :joy: **Funny Commands** :joy:
 

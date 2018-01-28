@@ -274,7 +274,6 @@ if(msg.startsWith(prefix + '8ball')){
 }
 
 if(msg.startsWith(prefix + 'stats')){
-  if(message.author.id != 343479135055642625) return;
   const moment = require("moment");
   const momentDurationFormatSetup = require("moment-duration-format");
   var processUptime = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
@@ -292,11 +291,13 @@ for(var k = 0; k < client.guilds.size; k+=1){
   .setThumbnail(client.user.avatarURL)
   .setTimestamp()
   .setURL('')
+  .addField(`Memory Usage`, `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true)
   .addField(`Client Uptime`, `${processUptime}`, true)
   .addField(`Users`, `${counter}`, true)
   .addField(`Guilds`, `${client.guilds.size}`, true)
   .addField(`Channels`, `${client.channels.size}`, true)
   .addField(`Help me to be in more servers!`, `type 'd-invite' to have my invite link!`, true)
+  .addField(`Node`, `${process.version}`, true)
 
 message.channel.send({ embed });
 }

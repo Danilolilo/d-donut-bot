@@ -890,6 +890,7 @@ prefix = \`d-\`
 10- **website:** my website.
 11-**group:** my server link.
 12- **urbandictionary / ud:** search something in urband dictionary.
+13- **stats:** D-Donut's stats.
 
 :joy: **Funny Commands** :joy:
 

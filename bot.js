@@ -411,7 +411,6 @@ if(msg.startsWith(prefix + 'server')) {
   .addField(`Channels`, `${message.guild.channels.size}`, true)
   .addField(`Server Owner`, `@${message.guild.owner.user.tag}`, true)
   .addField(`members online`, `${membersOnline}`)
-  .addField(`Roles List`, `type d-r.list to see server's roles list`, true)
   .addField(`Server Region`, `${message.guild.region}`, true)
 
 

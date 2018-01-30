@@ -788,23 +788,14 @@ if(msg.startsWith(prefix + "goodbye"))  {
 
 if(msg.startsWith(prefix + "prune")) {
 if (!message.member.permissions.has('MANAGE_MESSAGES')) return message.reply("Haha, nice try but you don't have 'Manage Messages' permission :smile:");
-       let messagecount = parseInt(args[1]) || 1;
+       var messagecount = args[1];
+       if(!messagecount) return message.reply('please, specify an amout of messages to prune :rolling_eyes:')
 
-       var deletedMessages = 1;
+    message.channel.bulkDelete(messagecount);
 
-       message.channel.fetchMessages({limit: Math.min(messagecount + 1, 100)}).then(messages => {
-           messages.forEach(m => {
-
-                   m.bulkDelete().catch(console.error);
-                   deletedMessages++;
-
-           });
-       }).then(() => {
-               if (deletedMessages === -1) deletedMessages = -1;
-               message.channel.send(`:white_check_mark: Deleted \`${deletedMessages-2}\` messages from this channel.`)
-                   .then(m => m.delete(3000));
-       }).catch(console.error);
-   }
+               message.channel.send(`:white_check_mark: Deleted \`${messagecount}\` messages from this channel.`)
+                   .then(m => m.delete(5000));
+}
 
 
    if (msg.startsWith(prefix + 'say ')){

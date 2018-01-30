@@ -54,9 +54,6 @@ client.on('message', message => {
     var command = args[0].toLowerCase();
     const bot = new Discord.Client();
     const fs = require('fs')
-//    const dbl = require("dblposter");
-//   const dblPoster = new dbl(`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM5NDkyOTMyNjI0NTU0MzkzNyIsImJvdCI6dHJ1ZSwiaWF0IjoxNTE3MDAxNjMwfQ.EpMf6C1Yz4dyNSVIfvomYMPVK9l14HpgkMNxSojyDRE`);
-//    dblPoster.bind(client);
 
 client.user.setPresence({ game: { name: 'Type "d-help" for help!', type: 0 } });
 
@@ -113,6 +110,7 @@ if(msg.startsWith(prefix + 'uptime')){
 
 
 if(msg.startsWith(prefix + "meme")){
+  if(message.channel.permissionsFor(message.client.user).has('EMBED_LINKS') == false) return message.reply('sorry but I cannot send Embed Links for this channel... check my permissions and try again!');	
   var list = ["http://i0.kym-cdn.com/photos/images/newsfeed/001/217/729/f9a.jpg", // Primeiro iremos criar uma lista com todas as nossas fan arts da Shantae
 	"https://cdn.stackward.com/wp-content/uploads/2016/09/sarcastic-meme-5.jpg",
 	"https://i.pinimg.com/736x/94/ab/4f/94ab4f2e19f96539dbf400238a9a48d0--youth-groups-dankest-memes.jpg",
@@ -158,6 +156,7 @@ message.channel.send({ embed });
 
 
 if(msg.startsWith(prefix + 'poll')) {
+  if(message.channel.permissionsFor(message.client.user).has('EMBED_LINKS') == false) return message.reply('sorry but I cannot send Embed Links for this channel... check my permissions and try again!');
    var Option = args.slice(2).join(' ');
    if(!Option) return message.reply('please, follow this example: **d-poll (time[m, h, d]) (question)**')
    var agree = "✅";
@@ -246,6 +245,7 @@ ${entries[0].example}`)
 }
 
 if(msg.startsWith(prefix + '8ball')){
+  if(message.channel.permissionsFor(message.client.user).has('EMBED_LINKS') == false) return message.reply('sorry but I cannot send Embed Links for this channel... check my permissions and try again!');
   var list = ["yes", "no", "maybe", "of course", "I don't know", "Ask me later", "Maybe you can try to see", "Maybe your mother knows the answer", "Of course not", "Don't even try", "Can you ask again?"]
   var question = args.slice(1).join(' ');
   if(!question) return message.reply('Please, follow this: **d-8ball (question)**');
@@ -274,6 +274,7 @@ if(msg.startsWith(prefix + '8ball')){
 }
 
 if(msg.startsWith(prefix + 'stats')){
+  if(message.channel.permissionsFor(message.client.user).has('EMBED_LINKS') == false) return message.reply('sorry but I cannot send Embed Links for this channel... check my permissions and try again!');
   const moment = require("moment");
   const momentDurationFormatSetup = require("moment-duration-format");
   var processUptime = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
@@ -303,6 +304,7 @@ message.channel.send({ embed });
 }
 
 if(msg.startsWith(prefix + 'info')) {
+  if(message.channel.permissionsFor(message.client.user).has('EMBED_LINKS') == false) return message.reply('sorry but I cannot send Embed Links for this channel... check my permissions and try again!');
   var member = message.mentions.users.first();
   if(!member) return message.reply('Please, follow this: **d-info (@user)**')
   avatarURL = message.client.users.get(member.id).avatarURL;
@@ -333,6 +335,7 @@ if(msg.startsWith(prefix + 'info')) {
 };
 
 if(msg.startsWith(prefix + "channel")){
+  if(message.channel.permissionsFor(message.client.user).has('EMBED_LINKS') == false) return message.reply('sorry but I cannot send Embed Links for this channel... check my permissions and try again!');
   var kakchannel = args.slice(1).join(' ');
   if(!kakchannel) return message.reply('please, specify a channel to get info...');
 
@@ -362,6 +365,7 @@ if(msg.startsWith(prefix + "channel")){
 }
 
 if(msg.startsWith(prefix + 'role')){
+  if(message.channel.permissionsFor(message.client.user).has('EMBED_LINKS') == false) return message.reply('sorry but I cannot send Embed Links for this channel... check my permissions and try again!');
   var kakrole = args.slice(1).join(' ');
   if(!kakrole) return message.reply('please, specify a role to get info...');
 
@@ -391,6 +395,7 @@ if(msg.startsWith(prefix + 'role')){
 }
 
 if(msg.startsWith(prefix + 'server')) {
+  if(message.channel.permissionsFor(message.client.user).has('EMBED_LINKS') == false) return message.reply('sorry but I cannot send Embed Links for this channel... check my permissions and try again!');
   var membersOnline = message.guild.members.filter(x => (x.user.presence.status) === "online" || "idle" || "do not disturb").size
   var serverCreated = message.guild.createdAt.toString().split(' ');
   const embed = new Discord.RichEmbed()
@@ -418,6 +423,7 @@ if(msg.startsWith(prefix + 'server')) {
 };
 
 if(msg.startsWith(prefix + "r.list")){
+  if(message.channel.permissionsFor(message.client.user).has('EMBED_LINKS') == false) return message.reply('sorry but I cannot send Embed Links for this channel... check my permissions and try again!');
   const embed = new Discord.RichEmbed()
   .setTitle("")
   .setAuthor( '', '' )
@@ -428,11 +434,13 @@ if(msg.startsWith(prefix + "r.list")){
   .setThumbnail(message.guild.iconURL)
   .setTimestamp()
   .setURL('')
-  .addField(`Roles List`, `Here's server roles: ${message.guild.roles.map(rp => rp.name).join(' -- ')}`, true)
+  .addField(`Roles List`, `Here's server roles: 
+${message.guild.roles.map(rp => rp.name).join(', ')}`, true)
 }
 
 
 if (msg.startsWith(prefix + 'chance')) {
+	  if(message.channel.permissionsFor(message.client.user).has('EMBED_LINKS') == false) return message.reply('sorry but I cannot send Embed Links for this channel... check my permissions and try again!');
   var question = args.slice(1).join(' ');
   if(!question) return message.reply('Please, follow this: **d-chance (question)**');
   const embed = new Discord.RichEmbed()
@@ -494,6 +502,7 @@ if(reaction.users.has(user.id)) {
 //  reaction.users.addRole(en);
 
  if(msg.startsWith(prefix + 'ship')) {
+  if(message.channel.permissionsFor(message.client.user).has('EMBED_LINKS') == false) return message.reply('sorry but I cannot send Embed Links for this channel... check my permissions and try again!');
    var member = message.mentions.users.first();
    if(!member) return message.reply('Please, follow this: **d-ship (@user)**')
    avatarURL = message.client.users.get(member.id).avatarURL;
@@ -663,6 +672,7 @@ if(msg.startsWith(prefix + "test")){
 //message.guild.iconURL
 
 if(msg.startsWith(prefix + "icon")){
+  if(message.channel.permissionsFor(message.client.user).has('EMBED_LINKS') == false) return message.reply('sorry but I cannot send Embed Links for this channel... check my permissions and try again!');
   var avatarURL = message.guild.iconURL
   embed = {
       color: 0xFF8DFD,
@@ -674,6 +684,7 @@ if(msg.startsWith(prefix + "icon")){
 }
 
 if (msg.startsWith(prefix + "avatar")){
+  if(message.channel.permissionsFor(message.client.user).has('EMBED_LINKS') == false) return message.reply('sorry but I cannot send Embed Links for this channel... check my permissions and try again!');
           let user, avatarURL, embed, sender;
           sender = message.author;
                user = message.mentions.users.first();
@@ -703,6 +714,7 @@ if (msg.startsWith(prefix + "avatar")){
 
 
              if (msg.startsWith(prefix + "website")) {
+		  if(message.channel.permissionsFor(message.client.user).has('EMBED_LINKS') == false) return message.reply('sorry but I cannot send Embed Links for this channel... check my permissions and try again!');
                var link = ("http://d-donut-discord-bot.webnode.com/")
                embed = {
                    color: 0xFF8DFD,
@@ -719,6 +731,7 @@ if (msg.startsWith(prefix + "avatar")){
 
 
 if(msg.startsWith(prefix + "group")){
+  if(message.channel.permissionsFor(message.client.user).has('EMBED_LINKS') == false) return message.reply('sorry but I cannot send Embed Links for this channel... check my permissions and try again!');
   var serverLink = ('https://discord.gg/C5qzAB2')
   embed = {
       color: 0xFF8DFD,
@@ -736,6 +749,7 @@ if(msg.startsWith(prefix + "group")){
 
 
 if (msg.startsWith(prefix + "invite")) {
+  if(message.channel.permissionsFor(message.client.user).has('EMBED_LINKS') == false) return message.reply('sorry but I cannot send Embed Links for this channel... check my permissions and try again!');
   var link = ("https://discordapp.com/api/oauth2/authorize?client_id=394929326245543937&permissions=2080763094&scope=bot")
   embed = {
       color: 0xFF8DFD,
@@ -781,14 +795,14 @@ if (!message.member.permissions.has('MANAGE_MESSAGES')) return message.reply("Ha
        message.channel.fetchMessages({limit: Math.min(messagecount + 1, 100)}).then(messages => {
            messages.forEach(m => {
 
-                   m.delete().catch(console.error);
+                   m.bulkDelete().catch(console.error);
                    deletedMessages++;
 
            });
        }).then(() => {
                if (deletedMessages === -1) deletedMessages = -1;
                message.channel.send(`:white_check_mark: Deleted \`${deletedMessages-2}\` messages from this channel.`)
-                   .then(m => m.delete(2000));
+                   .then(m => m.delete(3000));
        }).catch(console.error);
    }
 
@@ -829,6 +843,7 @@ if(msg.startsWith(prefix + "eval")){
 }
 
 if (msg.startsWith(prefix + "bug-report")){
+	  if(message.channel.permissionsFor(message.client.user).has('EMBED_LINKS') == false) return message.reply('sorry but I cannot send Embed Links for this channel... check my permissions and try again!');
              embed = {
                  color: 0xFF8DFD,
                  author: {

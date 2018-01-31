@@ -574,7 +574,7 @@ if(msg.startsWith(prefix + 'unban')){
   if(message.author.id == banmember.id) return message.reply("You cannot unban yourself :rolling_eyes:");
 	
   mutemember.unban().then(member =>
-  message.channel.send(`**${banmember.user.username}** was successfully unbanned :thumbsup:`)
+  message.channel.send(`**${banmember.user.username}** was successfully unbanned :thumbsup:`));
 }
 
 

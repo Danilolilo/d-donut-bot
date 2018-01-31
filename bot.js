@@ -811,15 +811,16 @@ if (!message.member.permissions.has('MANAGE_MESSAGES')) return message.reply("Ha
 
 if(msg.startsWith(prefix + "eval")){
   var result, code, erro, ownerID = '343479135055642625';
-                    if (message.author.id != ownerID) return message.reply("Unauthorized!");
+                    if (message.author.id != ownerID) return;
                     code = message.content.substring((prefix + " eval").length, message.content.length);
-                    if (!code.length) message.reply("No code provided!");
+                    if (!code.length) return message.reply("No code provided!");
                     try {
                         result = eval(code);
-                    } catch(error) {
-                                message.reply(`Error while evaluating: \`\`\`${error}\`\`\``)
+                    } catch(err) {
+                                message.reply(`Error while evaluating: 
+\`\`\`${err}\`\`\``);
                     } finally {
-                                if (["boolean","number"].some(x => typeof result === x))
+                                if (["boolean","number"].some(x => typeof result === x));
                                         result = result.toString();
                                 if (typeof result === "object")
                                         result = JSON.stringify(result, null, 2);

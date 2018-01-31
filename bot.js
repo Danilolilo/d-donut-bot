@@ -435,6 +435,7 @@ if(msg.startsWith(prefix + "r.list")){
   .setTimestamp()
   .setURL('')
   .addField(`Roles List`, `Here's server roles: 
+
 ${message.guild.roles.map(rp => rp.name).join(', ')}`, true)
 }
 
@@ -559,18 +560,22 @@ if(msg.startsWith(prefix + 'ban')) {
 
     var banmember = message.mentions.members.first();
     if(!banmember) return message.reply("Hey, can you try again but now trying to specify a user to ban? thanks :thumbsup:");
-    if(!banmember.bannable)
-      return message.reply(":x: I cannot ban this user! Maybe you can try again later...");
-
-    let reason = args.slice(2).join(' ');
-    if(!reason)
-      return message.reply("Please indicate a reason for the ban!");
+    if(!banmember.bannable) return message.reply(":x: I cannot ban this user! Maybe you can try again later...");
 
     banmember.ban().then(member =>
-    message.channel.send(`**${member.user.username}** was succesfully banned :thumbsup:`));
+    message.channel.send(`**${member.user.username}** was successfully banned :thumbsup:`));
   }
 
-
+if(msg.startsWith(prefix + 'unban')){
+  if(!message.channel.permissionsFor(message.client.user).has('MANAGE_ROLES')) return message.reply("Haha, nice try but you don't have 'Mute Members' permission :smile:");
+	
+  var banmember = args[1];
+  if(!banmember) return message.reply("Hey, can you try again but now trying to specify a user to mute? thanks :thumbsup:");
+  if(message.author.id == banmember.id) return message.reply("You cannot unban yourself :rolling_eyes:");
+	
+  mutemember.unban().then(member =>
+  message.channel.send(`**${banmember.user.username}** was successfully unbanned :thumbsup:`)
+}
 
 
 
@@ -812,8 +817,7 @@ if(msg.startsWith(prefix + "eval")){
                     try {
                         result = eval(code);
                     } catch(error) {
-                                result = JSON.stringify(error, null, 2);
-                                erro = true;
+                                message.reply(`Error while evaluating: \`\`\`${error}\`\`\``)
                     } finally {
                                 if (["boolean","number"].some(x => typeof result === x))
                                         result = result.toString();

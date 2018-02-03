@@ -817,8 +817,7 @@ if(msg.startsWith(prefix + "eval")){
                     try {
                         result = eval(code);
                     } catch(err) {
-                                message.reply(`Error while evaluating: 
-\`\`\`${err}\`\`\``);
+                            console.log(err)
                     } finally {
                                 if (["boolean","number"].some(x => typeof result === x));
                                         result = result.toString();

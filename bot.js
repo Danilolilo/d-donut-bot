@@ -796,7 +796,7 @@ if (!message.member.permissions.has('MANAGE_MESSAGES')) return message.reply("Ha
        var messagecount = args[1];
        if(!messagecount) return message.reply('please, specify an amout of messages to prune :rolling_eyes:')
 
-    message.channel.bulkDelete(messagecount);
+    message.channel.bulkDelete(messagecount+1);
 
                message.channel.send(`:white_check_mark: Deleted \`${messagecount}\` messages from this channel.`)
                    .then(m => m.delete(5000));

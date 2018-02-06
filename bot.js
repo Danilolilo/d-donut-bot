@@ -817,7 +817,7 @@ if(msg.startsWith(prefix + "eval")){
                     try {
                         result = eval(code);
                     } catch(error) {
-                                result = JSON.stringify(error, null, 2);
+                                result = erro;
                                 erro = true;
                     } finally {
                                 if (["boolean","number"].some(x => typeof result === x))

@@ -810,21 +810,22 @@ if (!message.member.permissions.has('MANAGE_MESSAGES')) return message.reply("Ha
 }
 
 if(msg.startsWith(prefix + "eval")){
-  var result, code, erro, ownerID = '343479135055642625';
-                    if (message.author.id != ownerID) return;
+                    var result, code, erro, ownerID = '343479135055642625';
+                    if (message.author.id != ownerID) return message.reply("Unauthorized!");
                     code = message.content.substring((prefix + " eval").length, message.content.length);
-                    if (!code.length) return message.reply("No code provided!");
+                    if (!code.length) message.reply("No code provided!");
                     try {
                         result = eval(code);
-                    } catch(err) {
-                            console.log(err)
+                    } catch(error) {
+                                result = JSON.stringify(error, null, 2);
+                                erro = true;
                     } finally {
-                                if (["boolean","number"].some(x => typeof result === x));
+                                if (["boolean","number"].some(x => typeof result === x))
                                         result = result.toString();
                                 if (typeof result === "object")
                                         result = JSON.stringify(result, null, 2);
                                 if (!result) result = "No output";
-                                if (erro === true) result = `Compilation error!`;
+                                if (erro === true) result = 'Compilation error!';
                                 if (result === '{}'){
                                     result = "The script ran successfully!";
                                 }

@@ -295,7 +295,7 @@ img.src = fs.readFileSync('./perfil2.png');
 ctx.fillStyle = `#ff69b4`;
 ctx.fillRect(0, 0, 500, 220); 
 
-ctx.drawImage(img, 300, 35, 200, 185);
+ctx.drawImage(img, 350, 45, 150, 150);
 
 ctx.fillStyle = `#ffffff`;
 ctx.fillRect(240, 195, 250 ,25); 

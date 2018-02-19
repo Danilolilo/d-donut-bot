@@ -277,7 +277,7 @@ if(msg.startsWith(prefix + 'stats')){
   if(message.channel.permissionsFor(message.client.user).has('EMBED_LINKS') == false) return message.reply('sorry but I cannot send Embed Links for this channel... check my permissions and try again!');
   const moment = require("moment");
   const momentDurationFormatSetup = require("moment-duration-format");
-  var processUptime = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
+  var processUptime = moment.duration(client.uptime).format(" D [d], H [h], m [mins], s [s]");
   var counter = 0;
 for(var k = 0; k < client.guilds.size; k+=1){
         counter = counter +  client.guilds.map(x=> x.memberCount)[k];

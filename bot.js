@@ -282,25 +282,45 @@ if(msg.startsWith(prefix + 'stats')){
 for(var k = 0; k < client.guilds.size; k+=1){
         counter = counter +  client.guilds.map(x=> x.memberCount)[k];
 }
-  const embed = new Discord.RichEmbed()
-  .setTitle("")
-  .setAuthor( '', '' )
-  .setColor(0xFF8DFD)
-  .setDescription(``)
-  .setFooter(client.user.username, client.user.avatarURL)
-  .setImage()
-  .setThumbnail(client.user.avatarURL)
-  .setTimestamp()
-  .setURL('')
-  .addField(`Memory Usage`, `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true)
-  .addField(`Client Uptime`, `${processUptime}`, true)
-  .addField(`Users`, `${counter}`, true)
-  .addField(`Guilds`, `${client.guilds.size}`, true)
-  .addField(`Channels`, `${client.channels.size}`, true)
-  .addField(`Help me to be in more servers!`, `type 'd-invite' to have my invite link!`, true)
-  .addField(`Node`, `${process.version}`, true)
+var Canvas = require('canvas')
+  , Image = Canvas.Image
+  , canvas = new Canvas(500, 220)
+  , ctx = canvas.getContext('2d');
+ 
+const fs = require('fs');
 
-message.channel.send({ embed });
+let img = new Image;
+img.src = fs.readFileSync('./perfil2.png');
+
+ctx.fillStyle = `#ff69b4`;
+ctx.fillRect(0, 0, 500, 220); 
+
+ctx.drawImage(img, 300, 35, 200, 185);
+
+ctx.fillStyle = `#ffffff`;
+ctx.fillRect(240, 195, 250 ,25); 
+ctx.fillStyle = `#ffb6c1`;
+ctx.fillRect(250, 195, 250 ,25); 
+ctx.fillStyle = `#ffb6c1`;
+ctx.fillRect(0, 0, 500, 35); 
+
+ctx.font = '30px Arial';
+ctx.rotate();
+ctx.fillStyle = `#000000`;
+ctx.fillText("D-Donut stats:", 145, 30);
+
+ctx.font = '20px Impact';
+ctx.rotate();
+ctx.fillStyle = `#000000`;
+ctx.fillText(`∙ Memory Usage - ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, 10, 60);
+ctx.fillText(`∙ Client Uptime - ${processUptime}`, 10, 90);
+ctx.fillText(`∙ Users - ${counter}`, 10, 120);
+ctx.fillText(`∙ Guilds - ${client.guilds.size}`, 10, 150);
+ctx.fillText(`∙ Channels - ${client.channels.size}`, 10, 180);
+ctx.fillText(`∙ Node - ${process.version}`, 10, 210);
+ctx.fillText("Ready for everything!", 265, 215);
+
+message.channel.send('', { files: [{ attachment: canvas.toBuffer(), }] })
 }
 
 if(msg.startsWith(prefix + 'info')) {
@@ -893,13 +913,13 @@ prefix = \`d-\`
 3- **info:** get user information.
 4- **server:** get server information.
 5- **role:** get role information.
-6- **channel:** ger channel information.
+6- **channel:** get channel information.
 7- **avatar:** get user avatar.
 8- **icon:** get server icon.
 9- **ping:** pong.
 10- **website:** my website.
 11-**group:** my server link.
-12- **urbandictionary / ud:** search something in urband dictionary.
+12- **urbandictionary / ud:** search something in urban dictionary.
 13- **stats:** D-Donut's stats.
 
 :joy: **Funny Commands** :joy:

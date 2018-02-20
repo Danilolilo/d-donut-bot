@@ -274,7 +274,6 @@ if(msg.startsWith(prefix + '8ball')){
 }
 
 if(msg.startsWith(prefix + 'stats')){
-  if(message.channel.permissionsFor(message.client.user).has('EMBED_LINKS') == false) return message.reply('sorry but I cannot send Embed Links for this channel... check my permissions and try again!');
   const moment = require("moment");
   const momentDurationFormatSetup = require("moment-duration-format");
   var processUptime = moment.duration(client.uptime).format(" D [d], H [h], m [m], s [s]");
@@ -282,6 +281,10 @@ if(msg.startsWith(prefix + 'stats')){
 for(var k = 0; k < client.guilds.size; k+=1){
         counter = counter +  client.guilds.map(x=> x.memberCount)[k];
 }
+
+  if(message.channel.permissionsFor(message.client.user).has('EMBED_LINKS') == false){
+  if(message.channel.permissionsFor(message.client.user).has('ATTACH_FILES') == false) return message.reply("sorry but I cannot send Embed Links or Attach Files in this channel... check my permissions and try again!");
+
 var Canvas = require('canvas')
   , Image = Canvas.Image
   , canvas = new Canvas(500, 220)
@@ -321,6 +324,27 @@ ctx.fillText(`∙ Node - ${process.version}`, 10, 210);
 ctx.fillText("Ready for everything!", 265, 215);
 
 message.channel.send('', { files: [{ attachment: canvas.toBuffer(), }] })
+  } else {
+  const embed = new Discord.RichEmbed()
+  .setTitle("")
+  .setAuthor( '', '' )
+  .setColor(0xFF8DFD)
+  .setDescription(``)
+  .setFooter(client.user.username, client.user.avatarURL)
+  .setImage()
+  .setThumbnail(client.user.avatarURL)
+  .setTimestamp()
+  .setURL('')
+  .addField(`Memory Usage`, `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true)
+  .addField(`Client Uptime`, `${processUptime}`, true)
+  .addField(`Users`, `${counter}`, true)
+  .addField(`Guilds`, `${client.guilds.size}`, true)
+  .addField(`Channels`, `${client.channels.size}`, true)
+  .addField(`Help me to be in more servers!`, `type 'd-invite' to have my invite link!`, true)
+  .addField(`Node`, `${process.version}`, true)
+
+message.channel.send({ embed });
+  }
 }
 
 if(msg.startsWith(prefix + 'info')) {

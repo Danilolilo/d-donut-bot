@@ -72,6 +72,8 @@ if (message.author.bot) return;
 
   Comando inteiro: \`${message}\``);
   }
+	
+  if (!message.guild) return message.author.send(":x: Sorry but I don't answer DM messages!");
 
   if (msg.startsWith(prefix)) {
     var commandUsed = message.createdAt.toString().split(' ');

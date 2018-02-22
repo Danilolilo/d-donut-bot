@@ -80,10 +80,10 @@ if (message.author.bot) return;
     var serv = client.guilds.find('name', 'D-Donut');
     var logC = serv.channels.find('name', 'logs-br');
     var logN = serv.channels.find('name', 'logs-en');
-    logC.send(`${message.author} usou o comando **${args[0]}** no servidor **${message.guild.name}** as ${commandUsed[4]}
+    logC.send(`**${message.author.username}**(${message.author.tag}) usou o comando **${args[0]}** no servidor **${message.guild.name}** as ${commandUsed[4]}
 
   Comando inteiro: \`${message}\``);
-    logN.send(`${message.author} usou o comando **${args[0]}** no servidor **${message.guild.name}** as ${commandUsed[4]}
+    logN.send(`**${message.author.username}**(${message.author.tag}) usou o comando **${args[0]}** no servidor **${message.guild.name}** as ${commandUsed[4]}
 
   Comando inteiro: \`${message}\``);
   }

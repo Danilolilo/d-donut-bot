@@ -83,9 +83,9 @@ if (message.author.bot) return;
     logC.send(`**${message.author.username}**(${message.author.tag}) usou o comando **${args[0]}** no servidor **${message.guild.name}** as ${commandUsed[4]}
 
   Comando inteiro: \`${message}\``);
-    logN.send(`**${message.author.username}**(${message.author.tag}) usou o comando **${args[0]}** no servidor **${message.guild.name}** as ${commandUsed[4]}
+    logN.send(`**${message.author.username}**(${message.author.tag}) used **${args[0]}** command in **${message.guild.name}** guild at ${commandUsed[4]} of today.
 
-  Comando inteiro: \`${message}\``);
+  Entire command: \`${message}\``);
   }
 
 

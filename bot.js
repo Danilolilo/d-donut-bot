@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const dbl = require("dblposter");
+const DBLPoster = new dbl(`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM5NDkyOTMyNjI0NTU0MzkzNyIsImJvdCI6dHJ1ZSwiaWF0IjoxNTI3ODc0MTQwfQ._fXCEDEBLPQZV68ALkWsk3b8QqSUd30IsRFjVmVtqfQ`);
 
 client.on('ready', () => {
   var counter = 0;
@@ -7,6 +9,8 @@ for(var k = 0; k < client.guilds.size; k+=1){
         counter = counter +  client.guilds.map(x=> x.memberCount)[k];
 }
   console.log(`Ready... I'm in ${client.guilds.size} guilds with ${counter} users`);
+	// Then, depending on what you called your client 
+  DBLPoster.bind(client);
 });
 
 client.on('guildMemberAdd', member => {
@@ -45,12 +49,6 @@ client.on('guildMemberRemove', member => {
   if (!channel) return;
   channel.send(`O-oh, **${member.user.username}** have jumped out of this server...`);
 });
-
-const dbl = require("dblposter");
-const DBLPoster = new dbl(`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM5NDkyOTMyNjI0NTU0MzkzNyIsImJvdCI6dHJ1ZSwiaWF0IjoxNTI3ODc0MTQwfQ._fXCEDEBLPQZV68ALkWsk3b8QqSUd30IsRFjVmVtqfQ`);
-
-// Then, depending on what you called your client
-DBLPoster.bind(client);
 
 client.on('message', message => {
     var prefix = 'd-';

@@ -10,7 +10,7 @@ for(var k = 0; k < client.guilds.size; k+=1){
 }
   console.log(`Ready... I'm in ${client.guilds.size} guilds with ${counter} users`);
 	// Then, depending on what you called your client 
-  DBLPoster.bind(client);
+  DBLPoster.bind(null, client);
 });
 
 client.on('guildMemberAdd', member => {

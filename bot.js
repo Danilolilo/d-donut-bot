@@ -79,19 +79,6 @@ if (message.author.bot) return;
 	
   if (!message.guild) return message.author.send(":x: Sorry but I don't answer DM messages!");
 
-  if (msg.startsWith(prefix)) {
-    var commandUsed = message.createdAt.toString().split(' ');
-    var serv = client.guilds.find('name', 'D-Donut');
-    var logC = serv.channels.find('name', 'logs-br');
-    var logN = serv.channels.find('name', 'logs-en');
-    logC.send(`**${message.author.username}**(${message.author.tag}) usou o comando **${args[0]}** no servidor **${message.guild.name}** as ${commandUsed[4]}
-
-  Comando inteiro: \`${message}\``);
-    logN.send(`**${message.author.username}**(${message.author.tag}) used **${args[0]}** command in **${message.guild.name}** guild at ${commandUsed[4]} of today.
-
-  Entire command: \`${message}\``);
-  }
-
 
 
 

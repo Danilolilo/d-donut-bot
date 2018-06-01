@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const dbl = require("dblposter");
-const DBLPoster = new dbl(`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM5NDkyOTMyNjI0NTU0MzkzNyIsImJvdCI6dHJ1ZSwiaWF0IjoxNTI3ODc0MTQwfQ._fXCEDEBLPQZV68ALkWsk3b8QqSUd30IsRFjVmVtqfQ`);
+const DBLPoster = new dbl(process.env.DBLTOKEN, client);
 
 client.on('ready', () => {
   var counter = 0;

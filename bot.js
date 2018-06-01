@@ -46,6 +46,12 @@ client.on('guildMemberRemove', member => {
   channel.send(`O-oh, **${member.user.username}** have jumped out of this server...`);
 });
 
+const dbl = require("dblposter");
+const DBLPoster = new dbl(`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM5NDkyOTMyNjI0NTU0MzkzNyIsImJvdCI6dHJ1ZSwiaWF0IjoxNTI3ODc0MTQwfQ._fXCEDEBLPQZV68ALkWsk3b8QqSUd30IsRFjVmVtqfQ`);
+
+// Then, depending on what you called your client
+DBLPoster.bind(client);
+
 client.on('message', message => {
     var prefix = 'd-';
     var msg_backup = message.content;
